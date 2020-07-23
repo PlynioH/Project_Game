@@ -25,3 +25,7 @@ animation = "stop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
 shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="PlayerBody"]
+current = true
+zoom = Vector2( 0.7, 0.5 )
