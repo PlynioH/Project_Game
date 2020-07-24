@@ -29,8 +29,6 @@ func get_input():
 		speed = run
 	if Input.is_action_just_released("ui_run"):
 		speed = 200
-	if Input.is_action_just_pressed("reload"):
-		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("fire"):
 		var fire = bullet.instance()
 		fire.set_position(get_node(".").position)
@@ -42,11 +40,12 @@ func gravity():
 		jump_point = 1
 		released_jump = 1
 	else:
+		jump_point = 0
 		velocity.y += 30
 
 func death():
 	if life == 0:
-		$".".queue_free()
+		queue_free()
 	else:
 		life -= 1
 
@@ -56,6 +55,6 @@ func _physics_process(_delta):
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
-func _on_heart_body_entered(body):
+func _on_heart_body_entered(_body):
 	death()
 	print(life)
