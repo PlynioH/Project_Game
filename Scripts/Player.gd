@@ -6,6 +6,8 @@ var run = 350
 var jump = 1000
 var jump_point = 1
 var released_jump = 1
+var life = 10
+var bullet = preload("res://Scenes/Bullet.tscn")
 
 var velocity = Vector2()
 
@@ -29,6 +31,11 @@ func get_input():
 		speed = 200
 	if Input.is_action_just_pressed("reload"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("fire"):
+		var fire = bullet.instance()
+		fire.set_position(get_node(".").position)
+		fire.position.x += 50
+		get_node("../").add_child(fire)
 
 func gravity():
 	if is_on_floor():
@@ -37,7 +44,18 @@ func gravity():
 	else:
 		velocity.y += 30
 
+func death():
+	if life == 0:
+		$".".queue_free()
+	else:
+		life -= 1
+
 func _physics_process(_delta):
 	gravity()
 	get_input()
+	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+
+func _on_heart_body_entered(body):
+	death()
+	print(life)
