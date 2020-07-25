@@ -6,10 +6,6 @@
 
 [node name="hello" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 195.832, 57.328 )
-scale = Vector2( -0.507612, 0.453139 )
-
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 0, -1 )
 tile_set = ExtResource( 2 )
@@ -24,3 +20,5 @@ scale = Vector2( 6, 6 )
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 886.745, 594.409 )
 scale = Vector2( 6, 6 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]

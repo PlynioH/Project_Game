@@ -21,13 +21,12 @@ extents = Vector2( 7.43089, 6.61904 )
 position = Vector2( 0.353951, 33.2716 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="KinematicBody2D"]
-collision_layer = 2147483651
-collision_mask = 3
+collision_layer = 2147483649
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
 shape = SubResource( 1 )
@@ -40,3 +39,4 @@ frames = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 3 )
+[connection signal="body_entered" from="KinematicBody2D/Area2D" to="KinematicBody2D" method="_on_Area2D_body_entered"]

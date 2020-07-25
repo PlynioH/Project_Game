@@ -12,24 +12,34 @@ var bullet = preload("res://Scenes/Bullet.tscn")
 var velocity = Vector2()
 
 func get_input():
+	
+	#control vars
+	var right_pressed = Input.is_action_pressed("ui_right")
+	var left_pressed = Input.is_action_pressed("ui_left")
+	var up_just_pressed = Input.is_action_just_pressed("ui_up")
+	var up_just_released = Input.is_action_just_released("ui_up")
+	var shift_pressed = Input.is_action_pressed("ui_run")
+	var shift_just_released = Input.is_action_just_released("ui_run")
+	var z_just_pressed = Input.is_action_just_pressed("fire")
+	
 	velocity.x = 0
-	if Input.is_action_pressed("ui_right"):
+	if right_pressed:
 		velocity.x += speed
-	if Input.is_action_pressed("ui_left"):
+	if left_pressed:
 		velocity.x -= speed
-	if Input.is_action_just_pressed("ui_up"):
+	if up_just_pressed:
 		if jump_point == 1:
 			velocity.y -= jump
 			jump_point = 0
-	if Input.is_action_just_released("ui_up"):
+	if up_just_released:
 		if released_jump == 1:
 			velocity.y = 30
 			released_jump = 0
-	if Input.is_action_pressed("ui_run"):
+	if shift_pressed:
 		speed = run
-	if Input.is_action_just_released("ui_run"):
+	if shift_just_released:
 		speed = 200
-	if Input.is_action_just_pressed("fire"):
+	if z_just_pressed:
 		var fire = bullet.instance()
 		fire.set_position(get_node(".").position)
 		fire.position.x += 50
