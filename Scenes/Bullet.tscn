@@ -3,10 +3,10 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.46103, 6.47723 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
@@ -21,8 +21,8 @@ extents = Vector2( 7.43089, 6.61904 )
 position = Vector2( 0.353951, 33.2716 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="KinematicBody2D"]
@@ -30,13 +30,13 @@ collision_layer = 2147483651
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 5.96046e-08, 0 )
 scale = Vector2( 0.23128, 0.203063 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 3 )
